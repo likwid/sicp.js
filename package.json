@@ -1,0 +1,42 @@
+{
+  "name": "sicp.js",
+  "version": "1.0.0",
+  "description": "Code from SICP book",
+  "main": "index.js",
+  "repository": "git@github.com:likwid/sicp.js.git",
+  "author": "Jeff Gonzalez <likwid@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^8.0.0",
+    "husky": "^4.2.5",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0"
+  },
+  "husky": {
+    "coloredOutput": true,
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test:coverage:ci"
+    }
+  },
+  "scripts": {
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "test": "mocha ./src/**/**.spec.js -w --reporter min",
+    "test:ci": "mocha ./src/**/**.spec.js --reporter dot",
+    "test:fun": "mocha ./src/**/**.spec.js -w --reporter nyan",
+    "test:coverage": "nyc yarn test:fun",
+    "test:coverage:ci": "nyc --reporter json-summary yarn test:ci",
+    "test:coverage:show": "open coverage/lcov-report/index.html",
+    "test:coverage:show-linux": "xdg-open coverage/lcov-report/index.html",
+    "sloc": "find src -name '*.js' | xargs cat | wc -l"
+  }
+}
