@@ -1,0 +1,10 @@
+---
+all: true
+include:
+ - src/**/*.js
+exclude:
+ - src/lib/**/*.spec.js                               # tests aren't useful to track coverage
+reporter:
+ - lcov
+ - text-summary
+ - json-summary
