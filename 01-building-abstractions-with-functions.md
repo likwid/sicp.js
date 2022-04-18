@@ -109,4 +109,9 @@ function one_three(a, b, c) {
     const [one, two, ...rest] = Array.from(arguments).sort((x, y) => y - x);
     return square(one) + square(two);
 }
+
+function one_three_a(...args) {
+    const [one, two, ...rest] = args.sort((x, y) => y - x);
+    return square(one) + square(two);
+}
 ```
